@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Force HTTPS -->
+  <script>if(location.protocol==='http:'&&location.hostname!=='localhost'&&!/^127\./.test(location.hostname)){location.replace('https:'+location.href.slice(5));}</script>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <title>ESCMID 2026 Group Registration | Annual Conference Services</title>
+  <meta name="description" content="Group registration for ESCMID 2026 – European Congress of Clinical Microbiology and Infectious Diseases. Register 6 or more attendees securely." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://escmid2026.2026conventions.com/group-registration.html" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Zoho Payments -->
+  <script src="https://static.zohocdn.com/zpay/zpay-js/v1/zpayments.js"></script>
+
+  <style>
+    /* ── Reset & Base ───────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f7fb;
+      color: #1a2332;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Variables ──────────────────────────────────────────────────── */
+    :root {
+      --navy:   #0d2240;
+      --blue:   #1a56a0;
+      --blue2:  #2470c8;
+      --teal:   #0b8a6f;
+      --light:  #e8f0fb;
+      --border: #d0daea;
+      --text:   #1a2332;
+      --muted:  #5a6a7e;
+      --red:    #c0392b;
+      --white:  #ffffff;
+      --shadow: 0 4px 24px rgba(26,64,128,.10);
+    }
+
+    /* ── Top Bar ────────────────────────────────────────────────────── */
+    .topbar {
+      background: var(--navy);
+      color: #a8c0d8;
+      font-size: .8rem;
+      text-align: center;
+      padding: .45rem 1rem;
+      letter-spacing: .02em;
+    }
+    .topbar strong { color: #fff; }
+
+    /* ── Header ─────────────────────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 60%, #0b6fa0 100%);
+      color: #fff;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      color: #cde4ff;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .3rem .85rem;
+      border-radius: 20px;
+      margin-bottom: .85rem;
+    }
+    header h1 {
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: .5rem;
+    }
+    header h1 span { color: #7ecfff; }
+    header p.subtitle {
+      font-size: .98rem;
+      color: #b8d4f0;
+      max-width: 580px;
+      margin: 0 auto .5rem;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      color: #7ecfff;
+      font-size: .8rem;
+      font-weight: 500;
+      margin-bottom: .9rem;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    /* ── Layout ─────────────────────────────────────────────────────── */
+    .page-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    /* ── Card ───────────────────────────────────────────────────────── */
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 2rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .card-title .ct-icon {
+      width: 30px; height: 30px;
+      background: var(--light);
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .card-title .ct-icon svg { width: 15px; height: 15px; stroke: var(--blue); fill: none; stroke-width: 2; stroke-linecap: round; }
+
+    /* ── Form Fields ────────────────────────────────────────────────── */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+    @media (max-width: 680px) {
+      .form-grid, .form-grid-3 { grid-template-columns: 1fr; }
+    }
+    .field { display: flex; flex-direction: column; gap: .35rem; }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: .01em;
+    }
+    label .req { color: var(--red); margin-left: .15rem; }
+    input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), select, textarea {
+      width: 100%;
+      padding: .65rem .9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: .92rem;
+      color: var(--text);
+      background: #fafcff;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      appearance: none;
+    }
+    input[type="checkbox"] {
+      width: 16px; height: 16px;
+      accent-color: var(--blue2);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    input:not([type="checkbox"]):focus, select:focus, textarea:focus {
+      border-color: var(--blue2);
+      box-shadow: 0 0 0 3px rgba(36,112,200,.12);
+      background: #fff;
+    }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a6a7e' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .85rem center;
+      padding-right: 2.2rem;
+    }
+
+    /* ── Attendee Table ─────────────────────────────────────────────── */
+    .attendee-table-wrap { overflow-x: auto; }
+    #attendee-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .83rem;
+      min-width: 820px;
+    }
+    #attendee-table thead tr {
+      background: #eaf1fb;
+    }
+    #attendee-table thead th {
+      padding: .6rem .7rem;
+      text-align: left;
+      font-size: .74rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      border-bottom: 1.5px solid #c0d4f0;
+      white-space: nowrap;
+    }
+    #attendee-table tbody tr { border-bottom: 1px solid #f0f4f9; }
+    #attendee-table tbody tr:last-child { border-bottom: none; }
+    #attendee-table tbody td { padding: .55rem .6rem; vertical-align: top; }
+    #attendee-table tbody td input,
+    #attendee-table tbody td select {
+      padding: .5rem .65rem;
+      font-size: .82rem;
+      min-width: 0;
+    }
+    #attendee-table tbody td.td-no {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-align: center;
+      width: 36px;
+      vertical-align: middle;
+    }
+    #attendee-table tbody td.td-action {
+      text-align: center;
+      vertical-align: middle;
+      width: 52px;
+    }
+    .btn-del-row {
+      background: none;
+      border: 1.5px solid #fca5a5;
+      color: #dc2626;
+      border-radius: 6px;
+      padding: .28rem .55rem;
+      cursor: pointer;
+      font-size: .78rem;
+      font-weight: 600;
+      transition: all .15s;
+    }
+    .btn-del-row:hover { background: #fff0f0; border-color: #ef4444; }
+    .btn-del-row:disabled { opacity: .35; cursor: not-allowed; }
+
+    /* member ID inline note */
+    .member-note {
+      font-size: .68rem;
+      color: var(--blue);
+      margin-top: .2rem;
+      display: none;
+    }
+    .member-note.show { display: block; }
+
+    /* ── Add Attendee Button ─────────────────────────────────────────── */
+    #btn-add-row {
+      width: 100%;
+      padding: .65rem;
+      border: 1.5px dashed var(--blue2);
+      border-radius: 9px;
+      background: #f0f7ff;
+      color: var(--blue);
+      font-family: inherit;
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: .85rem;
+      transition: all .15s;
+    }
+    #btn-add-row:hover { background: var(--light); }
+
+    /* ── Running Total ──────────────────────────────────────────────── */
+    #total-card {
+      background: linear-gradient(135deg,#eaf1fb,#f0f7ff);
+      border: 1.5px solid #3b82f6;
+      border-radius: 12px;
+      padding: 1.1rem 1.3rem;
+    }
+    .total-head {
+      font-size: .74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #6b7280;
+      margin-bottom: .65rem;
+    }
+    .total-line {
+      display: flex;
+      justify-content: space-between;
+      gap: .5rem;
+      font-size: .83rem;
+      color: #374151;
+      padding: .2rem 0;
+    }
+    .total-line span:first-child { flex: 1; }
+    .total-line.grand {
+      border-top: 1.5px solid #bfdbfe;
+      margin-top: .5rem;
+      padding-top: .5rem;
+      font-weight: 800;
+      color: #1e3a5f;
+      font-size: 1.05rem;
+    }
+
+    /* ── Submit Button ──────────────────────────────────────────────── */
+    .btn-submit {
+      width: 100%;
+      padding: .95rem 1.5rem;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue2) 100%);
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      letter-spacing: .02em;
+      transition: transform .15s, box-shadow .15s, opacity .15s;
+      box-shadow: 0 4px 16px rgba(26,86,160,.3);
+      margin-top: 1.5rem;
+    }
+    .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(26,86,160,.4); }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    .form-note {
+      font-size: .78rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: .85rem;
+      line-height: 1.5;
+    }
+    .form-note a { color: var(--blue); text-decoration: underline; }
+
+    /* ── Messages ───────────────────────────────────────────────────── */
+    #form-message {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      font-size: .9rem;
+      font-weight: 500;
+    }
+    #form-message.success { display:block; background:#e6f9f0; color:#0b6b40; border:1px solid #7edcaa; }
+    #form-message.error   { display:block; background:#fff0f0; color:#8b1a1a; border:1px solid #f8b4b4; }
+
+    /* ── Spinner ────────────────────────────────────────────────────── */
+    .spinner {
+      display: inline-block;
+      width: 17px; height: 17px;
+      border: 2.5px solid rgba(255,255,255,.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      vertical-align: middle;
+      margin-right: .45rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Reminder Toast ─────────────────────────────────────────────── */
+    #reminder-toast {
+      display:none; position:fixed; bottom:1.5rem; right:1.5rem;
+      background:#1e3a5f; color:#e0eeff; border-radius:12px;
+      padding:1rem 1.3rem 1rem 1rem; font-size:.82rem; max-width:285px;
+      box-shadow:0 8px 32px rgba(0,0,0,.35); z-index:8000;
+      animation:slideup .3s ease;
+    }
+    @keyframes slideup { from{transform:translateY(16px);opacity:0} to{transform:translateY(0);opacity:1} }
+    #reminder-toast strong { color:#fff; }
+    #reminder-toast a { color:#7ecfff; text-decoration:underline; }
+    #toast-close { float:right; background:none; border:none; color:#7a9ab8; font-size:1.1rem; cursor:pointer; margin:-.1rem -.3rem 0 .4rem; line-height:1; }
+
+    /* ── Document Upload Modal ─────────────────────────────────────── */
+    #doc-upload-modal {
+      display:none; position:fixed; inset:0;
+      background:rgba(13,34,64,.65); z-index:9998;
+      align-items:center; justify-content:center;
+    }
+    .doc-modal-inner {
+      background:#fff; border-radius:16px; padding:2rem;
+      max-width:540px; width:94%; max-height:88vh;
+      overflow-y:auto; box-shadow:0 24px 64px rgba(0,0,0,.28);
+    }
+    .doc-upload-item {
+      background:#f8fafc; border:1.5px solid var(--border);
+      border-radius:10px; padding:1rem; margin-bottom:.85rem;
+    }
+    .doc-upload-item h4 { font-size:.88rem; font-weight:700; color:var(--navy); margin-bottom:.2rem; }
+    .doc-upload-item .doc-cat-badge {
+      display:inline-block; background:var(--light); color:var(--blue);
+      font-size:.72rem; font-weight:700; border-radius:5px; padding:.15rem .45rem; margin-bottom:.5rem;
+    }
+    .doc-upload-item p { font-size:.78rem; color:var(--muted); margin-bottom:.65rem; line-height:1.55; }
+    .doc-upload-item input[type="file"] { padding:.4rem .6rem; font-size:.81rem; background:#fff; }
+    .doc-status { font-size:.74rem; color:#0b6b40; margin-top:.3rem; font-weight:600; display:none; }
+    .doc-status.error { color:#c0392b; }
+
+    /* ── Payment Confirmation Modal ─────────────────────────────────── */
+    #payment-modal {
+      display:none; position:fixed; inset:0;
+      background:rgba(13,34,64,.6); z-index:9999;
+      align-items:center; justify-content:center;
+    }
+    .pay-modal-inner {
+      background:#fff; border-radius:16px; padding:2rem;
+      max-width:460px; width:92%; max-height:90vh;
+      overflow-y:auto; box-shadow:0 24px 64px rgba(0,0,0,.28);
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      color: #7a9ab8;
+      text-align: center;
+      padding: 1.8rem 1.5rem;
+      font-size: .82rem;
+    }
+    footer strong { color: #cde4ff; }
+    footer a { color: #7ecfff; }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: .7rem;
+      flex-wrap: wrap;
+    }
+    footer .footer-links a { font-size: .82rem; }
+
+    /* ── Info Banner ────────────────────────────────────────────────── */
+    .info-banner {
+      background: #fffbeb;
+      border: 1.5px solid #f0bb72;
+      border-radius: 10px;
+      padding: .8rem 1rem;
+      font-size: .82rem;
+      color: #7a4000;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: .5rem;
+      align-items: flex-start;
+      line-height: 1.55;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <strong>ESCMID 2026 Congress</strong> &nbsp;|&nbsp; European Congress of Clinical Microbiology and Infectious Diseases
+  </div>
+
+  <!-- Header -->
+  <header>
+    <a class="back-link" href="escmid-2026-registration.html">
+      &#8592; Back to Individual / Small Group Registration
+    </a>
+    <div class="header-badge">Group Registration &mdash; 6+ Attendees</div>
+    <h1>ESCMID Global <span>2026</span><br>Group Registration</h1>
+    <p class="subtitle">Munich, Germany &mdash; April 17&ndash;21, 2026 &mdash; Secure group booking for 6 or more attendees</p>
+  </header>
+
+  <!-- Main -->
+  <main class="page-wrap">
+
+    <div class="info-banner">
+      &#128101;&nbsp;<span>This form is for groups of <strong>6 or more attendees</strong>. For 1&ndash;5 attendees, please use the <a href="escmid-2026-registration.html" style="color:#1a56a0;font-weight:600;text-decoration:underline;">individual registration form</a>.</span>
+    </div>
+
+    <!-- Pre-fill banner — shown when redirected from individual form -->
+    <div id="prefill-banner" style="display:none;background:#e6f9f0;border:1.5px solid #7edcaa;border-radius:10px;padding:.8rem 1.1rem;margin-bottom:1.5rem;font-size:.84rem;color:#0b6b40;display:flex;gap:.5rem;align-items:flex-start;line-height:1.55;">
+      &#10003;&nbsp;<span>Your details from the individual form have been <strong>pre-filled below</strong>. Please review, then complete the attendee table.</span>
+    </div>
+
+    <form id="groupForm" novalidate>
+
+      <!-- ══ Section 1: Group / Organisation ══════════════════════════ -->
+      <div class="card">
+        <div class="card-title">
+          <div class="ct-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0H5m14 0h2M5 21H3M9 7h1m-1 4h1m4-4h1m-1 4h1M9 21v-4a2 2 0 012-2h2a2 2 0 012 2v4"/></svg>
+          </div>
+          Group / Organisation Details
+        </div>
+        <div class="form-grid">
+          <div class="field full">
+            <label for="orgName">Organisation / Institution Name <span class="req">*</span></label>
+            <input type="text" id="orgName" name="orgName" placeholder="e.g. University Hospital of Munich" required />
+          </div>
+          <div class="field">
+            <label for="orgCountry">Country <span class="req">*</span></label>
+            <select id="orgCountry" name="orgCountry" required>
+              <option value="">Select country…</option>
+              <option>Austria</option><option>Belgium</option><option>Croatia</option>
+              <option>Czech Republic</option><option>Denmark</option><option>Finland</option>
+              <option>France</option><option>Germany</option><option>Greece</option>
+              <option>Hungary</option><option>Ireland</option><option>Italy</option>
+              <option>Netherlands</option><option>Norway</option><option>Poland</option>
+              <option>Portugal</option><option>Romania</option><option>Serbia</option>
+              <option>Slovakia</option><option>Slovenia</option><option>Spain</option>
+              <option>Sweden</option><option>Switzerland</option><option>Turkey</option>
+              <option>Ukraine</option><option>United Kingdom</option>
+              <option>Egypt</option><option>Israel</option><option>Jordan</option>
+              <option>Lebanon</option><option>Saudi Arabia</option><option>UAE</option>
+              <option>India</option><option>Pakistan</option><option>Iran</option>
+              <option>United States</option><option>Canada</option><option>Australia</option>
+              <option>South Africa</option><option>Nigeria</option><option>Kenya</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="purchaseOrder">Purchase Order / Reference <small style="font-weight:400;color:var(--muted)">(optional)</small></label>
+            <input type="text" id="purchaseOrder" name="purchaseOrder" placeholder="Internal PO or reference number" />
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ Section 2: Primary Contact ═══════════════════════════════ -->
+      <div class="card">
+        <div class="card-title">
+          <div class="ct-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          </div>
+          Primary Contact (Group Coordinator)
+        </div>
+        <div class="form-grid">
+          <div class="field">
+            <label for="pcFirstName">First Name <span class="req">*</span></label>
+            <input type="text" id="pcFirstName" name="pcFirstName" placeholder="First name" required />
+          </div>
+          <div class="field">
+            <label for="pcLastName">Last Name <span class="req">*</span></label>
+            <input type="text" id="pcLastName" name="pcLastName" placeholder="Last name" required />
+          </div>
+          <div class="field">
+            <label for="pcEmail">Email Address <span class="req">*</span></label>
+            <input type="email" id="pcEmail" name="pcEmail" placeholder="coordinator@hospital.com" required />
+          </div>
+          <div class="field">
+            <label for="pcPhone">Phone / WhatsApp <span class="req">*</span></label>
+            <input type="tel" id="pcPhone" name="pcPhone" placeholder="+43 … (include country code)" required />
+          </div>
+          <div class="field">
+            <label for="pcDesignation">Designation / Role <span class="req">*</span></label>
+            <select id="pcDesignation" name="pcDesignation" required>
+              <option value="">Select…</option>
+              <option>Professor</option><option>Associate Professor</option>
+              <option>Assistant Professor</option><option>Consultant Physician</option>
+              <option>Senior Registrar</option><option>Registrar / Resident</option>
+              <option>Fellow</option><option>Medical Student</option>
+              <option>Researcher / Scientist</option><option>Nurse / Allied Health</option>
+              <option>Administrator / Coordinator</option>
+              <option>Pharma / Industry</option><option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pcCountry">Country <span class="req">*</span></label>
+            <select id="pcCountry" name="pcCountry" required>
+              <option value="">Select country…</option>
+              <option>Austria</option><option>Belgium</option><option>Croatia</option>
+              <option>Czech Republic</option><option>Denmark</option><option>Finland</option>
+              <option>France</option><option>Germany</option><option>Greece</option>
+              <option>Hungary</option><option>Ireland</option><option>Italy</option>
+              <option>Netherlands</option><option>Norway</option><option>Poland</option>
+              <option>Portugal</option><option>Romania</option><option>Serbia</option>
+              <option>Slovakia</option><option>Slovenia</option><option>Spain</option>
+              <option>Sweden</option><option>Switzerland</option><option>Turkey</option>
+              <option>Ukraine</option><option>United Kingdom</option>
+              <option>Egypt</option><option>Israel</option><option>Jordan</option>
+              <option>Lebanon</option><option>Saudi Arabia</option><option>UAE</option>
+              <option>India</option><option>Pakistan</option><option>Iran</option>
+              <option>United States</option><option>Canada</option><option>Australia</option>
+              <option>South Africa</option><option>Nigeria</option><option>Kenya</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ Section 3: Attendee Table ════════════════════════════════ -->
+      <div class="card">
+        <div class="card-title">
+          <div class="ct-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          Attendees
+          <span id="attendee-count-badge" style="margin-left:auto;background:#1a56a0;color:#fff;font-size:.7rem;font-weight:700;padding:.2rem .55rem;border-radius:20px;">6 attendees</span>
+        </div>
+
+        <p style="font-size:.82rem;color:var(--muted);margin-bottom:1rem;">Enter details for each attendee. All fields are required. The primary contact above is <strong>not</strong> automatically added — add them below if they are also attending.</p>
+
+        <div class="attendee-table-wrap">
+          <table id="attendee-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+                <th>Category</th>
+                <th>Attendance</th>
+                <th>ESCMID Member #</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="attendee-tbody">
+              <!-- Rows injected by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <button type="button" id="btn-add-row">+ Add Another Attendee</button>
+
+        <p style="font-size:.76rem;color:var(--muted);margin-top:.7rem;">
+          <strong>Note:</strong> Exhibition Visitor and Day Ticket options are onsite-only categories.
+        </p>
+      </div>
+
+      <!-- ══ Section 4: Fee Breakdown & Total ════════════════════════ -->
+      <div class="card">
+        <div class="card-title">
+          <div class="ct-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          Fee Summary
+        </div>
+
+        <div style="font-size:.8rem;color:var(--muted);margin-bottom:.9rem;background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:.65rem .9rem;line-height:1.6;">
+          All prices in <strong>EUR</strong>. Fees include: Base registration + <strong>21% VAT</strong> + <strong>5% Handling Fee</strong> + <strong>5% Merchant Fee</strong>.
+        </div>
+
+        <div id="total-card">
+          <div class="total-head">Group Total Breakdown</div>
+          <div id="total-lines">
+            <div class="total-line" style="color:#9ca3af;font-style:italic;">Complete the attendee table above to see fees here.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ Section 5: Consent & Submit ═════════════════════════════ -->
+      <div class="card">
+        <div class="field full" style="margin-bottom:1rem;">
+          <label for="groupMessage" style="font-weight:600;font-size:.82rem;color:var(--text);">Additional Information / Questions <small style="font-weight:400;color:var(--muted)">(optional)</small></label>
+          <textarea id="groupMessage" name="groupMessage" placeholder="Visa letters, accommodation assistance, dietary requirements, abstract submissions, or any other queries…" style="min-height:70px;"></textarea>
+        </div>
+
+        <div class="field full">
+          <label style="display:flex;align-items:flex-start;gap:.5rem;cursor:pointer;font-weight:400;">
+            <input type="checkbox" id="consent" name="consent" required style="width:auto;margin-top:.25rem;flex-shrink:0;" />
+            <span style="font-size:.83rem;color:var(--muted);">
+              I agree to be contacted by Annual Conference Services regarding ESCMID 2026 group registration. Attendee information will only be used for registration processing and will not be shared with third parties.
+              <span class="req">*</span>
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          Review &amp; Pay for Group &rarr;
+        </button>
+
+        <div id="form-message" role="alert"></div>
+
+        <p class="form-note">
+          By submitting you agree to our <a href="#">Privacy Policy</a>.<br>
+          Payments are processed securely via <strong>Zoho Payments</strong>. Your group registration is confirmed instantly upon successful payment.
+        </p>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="mailto:support@2026conventions.com">Contact Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="https://eventtkts.com">EventTkts.com</a>
+    </div>
+    <p>© 2026 <strong>Annual Conference Services</strong> · <a href="https://2026conventions.com">2026conventions.com</a></p>
+    <p style="margin-top:.4rem;font-size:.76rem;color:#4a6a82;">
+      Annual Conference Services is an independent registration assistance provider. We are not affiliated with or endorsed by ESCMID.
+    </p>
+  </footer>
+
+
+  <!-- ══ Reminder Toast ═══════════════════════════════════════════════ -->
+  <div id="reminder-toast">
+    <button id="toast-close" onclick="document.getElementById('reminder-toast').style.display='none'">&#215;</button>
+    <strong>&#9203; Complete your group registration</strong><br>
+    <span style="font-size:.77rem;line-height:1.5;display:block;margin-top:.3rem;">ESCMID 2026 spots are filling fast. <a href="#groupForm" onclick="document.getElementById('reminder-toast').style.display='none'">Finish your booking &#8594;</a></span>
+  </div>
+
+  <!-- ══ Document Upload Modal ════════════════════════════════════════ -->
+  <div id="doc-upload-modal">
+    <div class="doc-modal-inner">
+      <div style="display:flex;align-items:center;gap:.65rem;margin-bottom:1rem;">
+        <div style="width:38px;height:38px;background:linear-gradient(135deg,#0b8a6f,#12b592);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <div>
+          <h3 style="font-size:1.05rem;font-weight:700;color:#1e3a5f;margin:0;">Upload Verification Documents</h3>
+          <p style="font-size:.76rem;color:#6b7280;margin:0;">Some attendees require supporting documents</p>
+        </div>
+      </div>
+      <div id="doc-upload-items"></div>
+      <div style="background:#fffbeb;border:1px solid #f0bb72;border-radius:8px;padding:.65rem .9rem;font-size:.77rem;color:#7a4000;margin-bottom:1rem;line-height:1.55;">
+        &#128206; Accepted: <strong>PDF, JPG, PNG</strong> &mdash; max 10 MB each &mdash; must be in <strong>English</strong>.
+      </div>
+      <div style="display:flex;gap:.7rem;">
+        <button id="doc-skip-btn" style="flex:1;padding:.7rem;border:1.5px solid #d1d5db;border-radius:9px;background:#fff;color:#374151;font-size:.84rem;font-weight:500;cursor:pointer;">Email Later</button>
+        <button id="doc-submit-btn" style="flex:2;padding:.7rem;border:none;border-radius:9px;background:linear-gradient(135deg,#0b8a6f,#12b592);color:#fff;font-size:.88rem;font-weight:700;cursor:pointer;">Submit Documents &#8594;</button>
+      </div>
+      <p id="doc-modal-msg" style="font-size:.71rem;color:#9ca3af;text-align:center;margin-top:.75rem;margin-bottom:0;">
+        Prefer to email? Send to <a href="mailto:support@2026conventions.com" style="color:#1a56a0;">support@2026conventions.com</a> with your Payment ID in the subject line.
+      </p>
+    </div>
+  </div>
+
+  <!-- ══ Payment Confirmation Modal ══════════════════════════════════ -->
+  <div id="payment-modal">
+    <div class="pay-modal-inner">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:1.1rem;">
+        <div style="width:36px;height:36px;background:linear-gradient(135deg,#1a56a0,#2470c8);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3 style="font-size:1.1rem;font-weight:700;color:#1e3a5f;margin:0;">Confirm Group Booking</h3>
+      </div>
+      <div id="modal-summary"></div>
+      <div style="display:flex;gap:.7rem;margin-top:1.2rem;">
+        <button id="modal-cancel" style="flex:1;padding:.72rem;border:1.5px solid #d1d5db;border-radius:9px;background:#fff;color:#374151;font-size:.88rem;font-weight:500;cursor:pointer;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background='#fff'">Cancel</button>
+        <button id="modal-confirm" style="flex:2;padding:.72rem;border:none;border-radius:9px;background:linear-gradient(135deg,#1a56a0,#2470c8);color:#fff;font-size:.9rem;font-weight:700;cursor:pointer;">Proceed to Payment &rarr;</button>
+      </div>
+      <p style="font-size:.73rem;color:#9ca3af;text-align:center;margin-top:.85rem;margin-bottom:0;">Secured by Zoho Payments · All prices in EUR</p>
+    </div>
+  </div>
+
+
+  <!-- ══ Logic ════════════════════════════════════════════════════════ -->
+  <script>
+
+    // ═══════════════════════════════════════════════════════════════════
+    // PRICING DATA
+    // ═══════════════════════════════════════════════════════════════════
+    const BASE_EUR = {
+      onsite: {
+        'member-regular':    916,  'nonmember-regular': 1070,
+        'member-ypsc':       593,  'nonmember-ypsc':    805,
+        'member-student':    504,  'nonmember-student': 538,
+        'member-lmic':       493,  'exhibition':        315,
+        'day-member':        463,  'day-nonmember':     466,
+      },
+      online: {
+        'member-regular':    800,  'nonmember-regular': 922,
+        'member-ypsc':       540,  'nonmember-ypsc':    740,
+        'member-student':    434,  'nonmember-student': 471,
+        'member-lmic':       394,
+      }
+    };
+
+    const PRICE_LABELS = {
+      'member-regular':    'Member Regular',
+      'nonmember-regular': 'Non-member Regular',
+      'member-ypsc':       'Member Young Physician / Scientist',
+      'nonmember-ypsc':    'Non-member Young Physician / Scientist',
+      'member-student':    'Member Student, Nurse & MTA/MLA',
+      'nonmember-student': 'Non-Member Student, Nurse & MTA/MLA',
+      'member-lmic':       'Member from LMIC',
+      'exhibition':        'Exhibition Visitor',
+      'day-member':        'Day Ticket – ESCMID Member',
+      'day-nonmember':     'Day Ticket – Non ESCMID Member',
+    };
+
+    const MEMBER_CATS = ['member-regular','member-ypsc','member-student','member-lmic','day-member'];
+    const FEE_RATES   = { vat: 0.21, handling: 0.05, merchant: 0.05 };
+
+    const DOC_REQUIREMENTS = {
+      'member-ypsc':       { badge: 'Young Physician / Scientist', instructions: 'Proof of training status – a letter from your institution or supervisor confirming your current training/residency position.', accept: '.pdf,.jpg,.jpeg,.png' },
+      'nonmember-ypsc':    { badge: 'Young Physician / Scientist', instructions: 'Proof of training status – a letter from your institution or supervisor confirming your current training/residency position.', accept: '.pdf,.jpg,.jpeg,.png' },
+      'member-student':    { badge: 'Student / Nurse / MTA/MLA', instructions: 'Students: copy of valid student ID (English). Nurses & MTA/MLA: proof of employment status (English).', accept: '.pdf,.jpg,.jpeg,.png' },
+      'nonmember-student': { badge: 'Student / Nurse / MTA/MLA', instructions: 'Students: copy of valid student ID (English). Nurses & MTA/MLA: proof of employment status (English).', accept: '.pdf,.jpg,.jpeg,.png' },
+    };
+
+    function calcFees(base) {
+      const vat      = Math.round(base * FEE_RATES.vat      * 100) / 100;
+      const handling = Math.round(base * FEE_RATES.handling  * 100) / 100;
+      const merchant = Math.round(base * FEE_RATES.merchant  * 100) / 100;
+      const total    = Math.round((base + vat + handling + merchant) * 100) / 100;
+      return { base, vat, handling, merchant, total };
+    }
+
+    function fmt(n) {
+      return 'EUR ' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    // ATTENDEE TABLE
+    // ═══════════════════════════════════════════════════════════════════
+    let rowCounter = 0;
+    const MIN_ROWS = 6;
+
+    function catOptions() {
+      return `
+        <option value="">Select…</option>
+        <option value="member-regular">Member Regular</option>
+        <option value="nonmember-regular">Non-member Regular</option>
+        <option value="member-ypsc">Member Young Physician / Scientist</option>
+        <option value="nonmember-ypsc">Non-member Young Physician / Scientist</option>
+        <option value="member-student">Member Student, Nurse & MTA/MLA</option>
+        <option value="nonmember-student">Non-Member Student, Nurse & MTA/MLA</option>
+        <option value="member-lmic">Member from LMIC</option>
+        <option value="exhibition">Exhibition Visitor (onsite only)</option>
+        <option value="day-member">Day Ticket – ESCMID Member (onsite only)</option>
+        <option value="day-nonmember">Day Ticket – Non ESCMID Member (onsite only)</option>
+      `;
+    }
+
+    function addRow(initialData) {
+      rowCounter++;
+      const id = rowCounter;
+      const tbody = document.getElementById('attendee-tbody');
+      const tr = document.createElement('tr');
+      tr.dataset.id = id;
+
+      const fn   = (initialData && initialData.fn)   || '';
+      const ln   = (initialData && initialData.ln)   || '';
+      const em   = (initialData && initialData.em)   || '';
+      const dob  = (initialData && initialData.dob)  || '';
+      const cat  = (initialData && initialData.cat)  || '';
+      const type = (initialData && initialData.type) || '';
+
+      tr.innerHTML = `
+        <td class="td-no">${tbody.querySelectorAll('tr').length + 1}</td>
+        <td><input type="text" name="fn_${id}" value="${fn}" placeholder="First" required /></td>
+        <td><input type="text" name="ln_${id}" value="${ln}" placeholder="Last" required /></td>
+        <td><input type="email" name="em_${id}" value="${em}" placeholder="email@example.com" required /></td>
+        <td><input type="date" name="dob_${id}" value="${dob}" required /></td>
+        <td>
+          <select name="cat_${id}" required>${catOptions()}</select>
+        </td>
+        <td>
+          <select name="type_${id}" required>
+            <option value="">Select…</option>
+            <option value="onsite">Onsite</option>
+            <option value="online">Online</option>
+          </select>
+        </td>
+        <td>
+          <input type="text" name="mid_${id}" placeholder="ESC-123456" />
+          <div class="member-note" id="mid-note-${id}">Required for this category</div>
+        </td>
+        <td class="td-action">
+          <button type="button" class="btn-del-row" data-id="${id}" title="Remove attendee">&#10005;</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+
+      // Set values if provided
+      if (cat)  tr.querySelector(`[name="cat_${id}"]`).value  = cat;
+      if (type) tr.querySelector(`[name="type_${id}"]`).value = type;
+
+      // Wire up events
+      tr.querySelector(`[name="cat_${id}"]`).addEventListener('change', function() {
+        handleCatChange(id, this.value);
+        syncOnlineOnlyOptions(id);
+        updateTotal();
+      });
+      tr.querySelector(`[name="type_${id}"]`).addEventListener('change', function() {
+        syncOnlineOnlyOptions(id);
+        updateTotal();
+      });
+      tr.querySelector('.btn-del-row').addEventListener('click', function() {
+        removeRow(id);
+      });
+
+      // Trigger validation for pre-set values
+      if (cat)  handleCatChange(id, cat);
+      if (cat || type) syncOnlineOnlyOptions(id);
+
+      updateRowNumbers();
+      updateDeleteButtons();
+      updateAttendeeCountBadge();
+      updateTotal();
+    }
+
+    function removeRow(id) {
+      const tr = document.querySelector(`tr[data-id="${id}"]`);
+      if (tr) {
+        const rowCount = document.querySelectorAll('#attendee-tbody tr').length;
+        if (rowCount <= MIN_ROWS) {
+          alert(`Group registration requires a minimum of ${MIN_ROWS} attendees. Please add more attendees if you wish to remove this one.`);
+          return;
+        }
+        tr.remove();
+      }
+      updateRowNumbers();
+      updateDeleteButtons();
+      updateAttendeeCountBadge();
+      updateTotal();
+    }
+
+    function updateRowNumbers() {
+      document.querySelectorAll('#attendee-tbody tr').forEach((tr, i) => {
+        const td = tr.querySelector('.td-no');
+        if (td) td.textContent = i + 1;
+      });
+    }
+
+    function updateDeleteButtons() {
+      const rows  = document.querySelectorAll('#attendee-tbody tr');
+      const isMin = rows.length <= MIN_ROWS;
+      rows.forEach(tr => {
+        const btn = tr.querySelector('.btn-del-row');
+        if (btn) btn.disabled = isMin;
+      });
+    }
+
+    function updateAttendeeCountBadge() {
+      const n = document.querySelectorAll('#attendee-tbody tr').length;
+      const b = document.getElementById('attendee-count-badge');
+      if (b) b.textContent = n + ' attendee' + (n !== 1 ? 's' : '');
+    }
+
+    function handleCatChange(id, catVal) {
+      const isMember = MEMBER_CATS.includes(catVal);
+      const midInput = document.querySelector(`[name="mid_${id}"]`);
+      const midNote  = document.getElementById(`mid-note-${id}`);
+      if (midInput) {
+        midInput.required   = isMember;
+        midInput.style.borderColor = '';
+      }
+      if (midNote) midNote.classList.toggle('show', isMember);
+    }
+
+    function syncOnlineOnlyOptions(id) {
+      const catSel  = document.querySelector(`[name="cat_${id}"]`);
+      const typeSel = document.querySelector(`[name="type_${id}"]`);
+      if (!catSel || !typeSel) return;
+      const onlineOnlyCats = ['member-regular','nonmember-regular','member-ypsc','nonmember-ypsc','member-student','nonmember-student','member-lmic'];
+      const onsiteOnlyCats = ['exhibition','day-member','day-nonmember'];
+
+      // If onsite-only cat, force onsite
+      if (onsiteOnlyCats.includes(catSel.value) && typeSel.value === 'online') {
+        typeSel.value = 'onsite';
+      }
+      // Gray out online for onsite-only cats
+      Array.from(typeSel.options).forEach(opt => {
+        if (opt.value === 'online') {
+          opt.disabled = onsiteOnlyCats.includes(catSel.value);
+          opt.text = onsiteOnlyCats.includes(catSel.value) ? 'Online (N/A)' : 'Online';
+        }
+      });
+    }
+
+    // Initialise with 6 rows
+    for (let i = 0; i < MIN_ROWS; i++) addRow();
+
+    document.getElementById('btn-add-row').addEventListener('click', () => addRow());
+
+    // ═══════════════════════════════════════════════════════════════════
+    // RUNNING TOTAL
+    // ═══════════════════════════════════════════════════════════════════
+    function getAttendeeList() {
+      const list = [];
+      document.querySelectorAll('#attendee-tbody tr').forEach((tr, i) => {
+        const id  = tr.dataset.id;
+        const cat = tr.querySelector(`[name="cat_${id}"]`)?.value;
+        const typ = tr.querySelector(`[name="type_${id}"]`)?.value;
+        const fn  = tr.querySelector(`[name="fn_${id}"]`)?.value || '';
+        const ln  = tr.querySelector(`[name="ln_${id}"]`)?.value || '';
+        if (cat && typ && BASE_EUR[typ]?.[cat]) {
+          list.push({ id, name: (fn + ' ' + ln).trim() || `Attendee ${i+1}`, cat, typ });
+        }
+      });
+      return list;
+    }
+
+    function updateTotal() {
+      const cont = document.getElementById('total-lines');
+      const list = getAttendeeList();
+      if (!list.length) {
+        cont.innerHTML = '<div class="total-line" style="color:#9ca3af;font-style:italic;">Complete the attendee table above to see fees here.</div>';
+        return;
+      }
+
+      let grand = 0;
+      let lines = '';
+      list.forEach(a => {
+        const f = calcFees(BASE_EUR[a.typ][a.cat]);
+        grand += f.total;
+        const typLbl = a.typ === 'onsite' ? 'Onsite' : 'Online';
+        lines += `<div class="total-line"><span>${a.name || 'Attendee'} &mdash; ${PRICE_LABELS[a.cat]} (${typLbl})</span><span style="font-weight:600;white-space:nowrap;">${fmt(f.total)}</span></div>`;
+      });
+      const n = list.length;
+      const totalRows = document.querySelectorAll('#attendee-tbody tr').length;
+      const incomplete = totalRows - n;
+      if (incomplete > 0) {
+        lines += `<div class="total-line" style="color:#9ca3af;font-style:italic;"><span>${incomplete} attendee${incomplete>1?'s':''} with incomplete category/attendance selection</span><span>—</span></div>`;
+      }
+      lines += `<div class="total-line grand"><span>Grand Total (${n} of ${totalRows} attendee${totalRows>1?'s':''})</span><span>${fmt(grand)}</span></div>`;
+      cont.innerHTML = lines;
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    // CONFIGURATION
+    // ═══════════════════════════════════════════════════════════════════
+    const _ep = atob('aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J4eldrYzd2SUo4bE1jb2hJcktUV0xka2tlWlViWjBsQXZQZ0piajdhbUdDYU9xRGx6MnRjZkJHODRzWGpNcThHTjgvZXhlYw==');
+    const GOOGLE_SCRIPT_URL = _ep;
+
+    // ▼▼▼ PASTE YOUR payment-proxy.gs deployment URL HERE ▼▼▼
+    const PROXY_URL = 'https://script.google.com/macros/s/AKfycbyeRe6ME5v_Nr-n8oZ9h88Rf6AhhUUbkeR-yF-dNLFnzfS68rxSPVWJIwzTEaOc-uQ/exec';
+
+    const ZOHO_ACCOUNT_ID = '890774134';
+    const ZOHO_API_KEY    = '1003.f7e40615b472fb6f71e517d2f56c767e.c070edfed23c12aa460cce55f4e0dab2';
+    const ZOHO_DOMAIN     = 'IN';
+
+    // Dynamic Zoho widget loader with CDN fallbacks
+    let zpayments = null;
+    let zohoScriptLoaded = false;
+
+    function loadZohoScript(urls, index) {
+      if (index >= urls.length) return;
+      var s = document.createElement('script');
+      s.src = urls[index];
+      s.onload  = function() { zohoScriptLoaded = true; initZohoPayments(); };
+      s.onerror = function() { loadZohoScript(urls, index + 1); };
+      document.head.appendChild(s);
+    }
+
+    window.addEventListener('load', function() {
+      loadZohoScript([
+        'https://static.zohocdn.com/zpay/zpay-js/v1/zpayments.js',
+        'https://js.zoho.in/zpay/zpay-js/v1/zpayments.js',
+        'https://payments.zoho.in/js/v1/zpayments.js'
+      ], 0);
+
+      // ── Pre-fill from URL params if coming from individual form bridge ──
+      const urlP = new URLSearchParams(window.location.search);
+      if (urlP.has('fn') || urlP.has('em')) {
+        const set = (id, val) => { const el = document.getElementById(id); if (el && val) el.value = val; };
+        set('pcFirstName',   urlP.get('fn'));
+        set('pcLastName',    urlP.get('ln'));
+        set('pcEmail',       urlP.get('em'));
+        set('pcPhone',       urlP.get('ph'));
+        set('pcCountry',     urlP.get('co'));
+        set('pcDesignation', urlP.get('de'));
+        // Also pre-fill orgName from institution if provided
+        if (urlP.get('in')) set('orgName', urlP.get('in'));
+        // Show the pre-fill banner
+        const banner = document.getElementById('prefill-banner');
+        if (banner) banner.style.display = 'flex';
+      }
+    });
+
+    function initZohoPayments() {
+      if (typeof window.ZPayments !== 'undefined' && !zpayments) {
+        try {
+          zpayments = new window.ZPayments({
+            account_id: ZOHO_ACCOUNT_ID,
+            domain:     ZOHO_DOMAIN,
+            otherOptions: {
+              api_key: ZOHO_API_KEY
+            }
+          });
+        } catch(e) {
+          console.error('ZPayments init error:', e);
+          try { zpayments = new window.ZPayments({ account_id: ZOHO_ACCOUNT_ID, domain: ZOHO_DOMAIN, api_key: ZOHO_API_KEY }); } catch(e2) { console.error('ZPayments fallback init error:', e2); }
+        }
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    // ABANDONMENT TRACKING
+    // ═══════════════════════════════════════════════════════════════════
+    let reminderShown = false;
+    let reminderTimer = null;
+
+    function trackEvent(type, extra) {
+      const email = document.getElementById('pcEmail')?.value || '';
+      const payload = {
+        event: type,
+        form: 'group-registration',
+        email,
+        orgName: document.getElementById('orgName')?.value || '',
+        ...extra,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent
+      };
+      try {
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch(e) {}
+    }
+
+    document.getElementById('pcEmail').addEventListener('blur', function() {
+      if (this.value) {
+        trackEvent('email_captured');
+        if (!reminderShown && !reminderTimer) {
+          reminderTimer = setTimeout(() => {
+            if (!reminderShown) {
+              reminderShown = true;
+              document.getElementById('reminder-toast').style.display = 'block';
+              trackEvent('reminder_shown');
+            }
+          }, 3 * 60 * 1000);
+        }
+      }
+    });
+
+    // ═══════════════════════════════════════════════════════════════════
+    // FORM SUBMISSION & PAYMENT
+    // ═══════════════════════════════════════════════════════════════════
+    document.getElementById('groupForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Validate
+      const orgName = document.getElementById('orgName').value.trim();
+      const pcFirst = document.getElementById('pcFirstName').value.trim();
+      const pcLast  = document.getElementById('pcLastName').value.trim();
+      const pcEmail = document.getElementById('pcEmail').value.trim();
+      const pcPhone = document.getElementById('pcPhone').value.trim();
+      const consent = document.getElementById('consent').checked;
+
+      if (!orgName || !pcFirst || !pcLast || !pcEmail || !pcPhone) {
+        showMsg('Please complete all required fields in Group and Primary Contact sections.', 'error');
+        return;
+      }
+      if (!consent) {
+        showMsg('Please accept the consent checkbox to continue.', 'error');
+        return;
+      }
+
+      const attendees = getAttendeeList();
+      const totalRows = document.querySelectorAll('#attendee-tbody tr').length;
+      if (totalRows < MIN_ROWS) {
+        showMsg(`Group registration requires at least ${MIN_ROWS} attendees.`, 'error');
+        return;
+      }
+      if (attendees.length < totalRows) {
+        showMsg(`Please select a Registration Category and Attendance Type for all attendees (${totalRows - attendees.length} incomplete).`, 'error');
+        return;
+      }
+
+      // Validate attendee required fields
+      let rowError = false;
+      document.querySelectorAll('#attendee-tbody tr').forEach(tr => {
+        const id  = tr.dataset.id;
+        const fn  = tr.querySelector(`[name="fn_${id}"]`)?.value.trim();
+        const ln  = tr.querySelector(`[name="ln_${id}"]`)?.value.trim();
+        const em  = tr.querySelector(`[name="em_${id}"]`)?.value.trim();
+        const dob = tr.querySelector(`[name="dob_${id}"]`)?.value;
+        const cat = tr.querySelector(`[name="cat_${id}"]`)?.value;
+        const mid = tr.querySelector(`[name="mid_${id}"]`)?.value.trim();
+        if (!fn || !ln || !em || !dob) { rowError = true; }
+        if (MEMBER_CATS.includes(cat) && !mid) { rowError = true; }
+      });
+      if (rowError) {
+        showMsg('Please complete all required fields for every attendee (name, email, date of birth, and ESCMID Member Number for member categories).', 'error');
+        return;
+      }
+
+      // Build grand total
+      let grandTotal = 0;
+      attendees.forEach(a => { grandTotal += calcFees(BASE_EUR[a.typ][a.cat]).total; });
+
+      const data = {
+        orgName, pcFirst, pcLast, pcEmail, pcPhone,
+        orgCountry:    document.getElementById('orgCountry').value,
+        pcDesignation: document.getElementById('pcDesignation').value,
+        pcCountry:     document.getElementById('pcCountry').value,
+        purchaseOrder: document.getElementById('purchaseOrder').value,
+        message:       document.getElementById('groupMessage').value,
+        attendees,
+        grandTotal
+      };
+
+      showPaymentModal(data);
+    });
+
+    // ── Payment Modal ─────────────────────────────────────
+    function showPaymentModal(data) {
+      const modal   = document.getElementById('payment-modal');
+      const summary = document.getElementById('modal-summary');
+
+      let lines = `
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:9px;padding:.9rem 1rem;margin-bottom:.9rem;font-size:.84rem;color:#374151;">
+          <div style="font-weight:700;color:#0d2240;margin-bottom:.4rem;">${data.orgName}</div>
+          <div>Primary Contact: <strong>${data.pcFirst} ${data.strong>${data.pcFirst} ${data.pcLast}</strong> (${data.pcEmail})</div>
+          <div style="margin-top:.25rem;">Attendees: <strong>${data.attendees.length}</strong></div>
+        </div>
+        <div style="font-size:.78rem;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.4rem;">Attendee Breakdown</div>
+        <div style="max-height:200px;overflow-y:auto;margin-bottom:.7rem;">
+      `;
+      data.attendees.forEach((a, i) => {
+        const f    = calcFees(BASE_EUR[a.typ][a.cat]);
+        const typL = a.typ === 'onsite' ? 'Onsite' : 'Online';
+        lines += `<div style="display:flex;justify-content:space-between;font-size:.81rem;padding:.22rem 0;border-bottom:1px solid #f0f4f9;gap:.5rem;"><span style="flex:1;">${i+1}. ${a.name} — ${PRICE_LABELS[a.cat]} (${typL})</span><span style="font-weight:600;white-space:nowrap;">${fmt(f.total)}</span></div>`;
+      });
+      lines += `</div>`;
+      lines += `<div style="display:flex;justify-content:space-between;font-size:1rem;font-weight:800;color:#1e3a5f;padding:.6rem .9rem;background:linear-gradient(135deg,#eaf1fb,#f0f7ff);border:1.5px solid #3b82f6;border-radius:9px;"><span>Grand Total (incl. all fees)</span><span>${fmt(data.grandTotal)}</span></div>`;
+      lines += `<div style="font-size:.73rem;color:#9ca3af;margin-top:.55rem;">Includes 21% VAT + 5% Handling + 5% Merchant Fee</div>`;
+
+      summary.innerHTML = lines;
+      modal.style.display = 'flex';
+
+      document.getElementById('modal-cancel').onclick = () => {
+        modal.style.display = 'none';
+      };
+      document.getElementById('modal-confirm').onclick = () => {
+        modal.style.display = 'none';
+        processPayment(data);
+      };
+    }
+
+    // ── Zoho Payment Processing ─────────────────────────────────────
+    async function processPayment(data) {
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Processing…';
+
+      const amount      = data.grandTotal.toFixed(2);
+      const description = `ESCMID 2026 Group Registration \u2013 ${data.orgName} (${data.attendees.length} attendees)`;
+
+      // Log group submission event via proxy (or legacy URL)
+      trackEvent('group_registration_submitted', {
+        orgName:       data.orgName,
+        attendeeCount: data.attendees.length,
+        grandTotal:    data.grandTotal,
+        firstName:     data.pcFirst,
+        lastName:      data.pcLast,
+        email:         data.pcEmail,
+        phone:         data.pcPhone
+      });
+
+      // ── STEP 1: Try proxy to create a Zoho payment session ──────────────
+      let sessionId = null;
+      if (PROXY_URL) {
+        try {
+          const proxyRes = await fetch(PROXY_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              action:               'create_payment_session',
+              amount:               amount,
+              currency_code:        'EUR',
+              description:          description,
+              customer_first_name:  data.pcFirst,
+              customer_last_name:   data.pcLast,
+              customer_email:       data.pcEmail,
+              customer_phone:       data.pcPhone
+            })
+          });
+          const proxyData = await proxyRes.json();
+          if (proxyData.success && proxyData.session_id) {
+            sessionId = proxyData.session_id;
+          }
+        } catch(proxyErr) {
+          console.warn('Proxy unavailable, falling back to direct widget:', proxyErr.message);
+        }
+      }
+
+      // ── STEP 2: Ensure Zoho widget is ready ────────────────────────────
+      if (!zpayments) initZohoPayments();
+
+      if (typeof window.ZPayments === 'undefined') {
+        // Widget failed to load — wait up to 4s
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        initZohoPayments();
+        if (typeof window.ZPayments === 'undefined') {
+          trackEvent('payment_error', { error: 'ZPayments not loaded', grandTotal: data.grandTotal });
+          btn.disabled = false;
+          btn.innerHTML = 'Review &amp; Pay for Group &rarr;';
+          showMsg('The payment window could not load. Please email <a href="mailto:support@2026conventions.com">support@2026conventions.com</a> with subject "ESCMID 2026 Group Registration" and we will send a secure payment link. Your registration details have been saved.', 'error');
+          return;
+        }
+      }
+
+      // ── STEP 3: Open Zoho widget ────────────────────────────────────────
+      // Unified result handler (called by callback, onSuccess, onFailure, onClose, or postMessage)
+      let resultHandled = false;
+      function handleZohoResult(res) {
+        if (resultHandled) return;
+        resultHandled = true;
+        window.removeEventListener('message', msgHandler);
+
+        if (res && (res.status === 'success' || res.payment_id || res.paymentId || res.transactionId)) {
+          clearTimeout(reminderTimer);
+          document.getElementById('reminder-toast').style.display = 'none';
+          trackEvent('payment_success', { paymentId: res.payment_id || res.paymentId || res.transactionId, grandTotal: data.grandTotal });
+          btn.innerHTML = '&#10003; Payment Complete';
+          btn.style.background = '#0b8a6f';
+          buildPostPaymentModal(data, res);
+
+        } else if (res && (res.status === 'cancelled' || res.status === 'closed')) {
+          trackEvent('payment_abandoned', { grandTotal: data.grandTotal });
+          btn.disabled = false;
+          btn.innerHTML = 'Review &amp; Pay for Group &rarr;';
+          showMsg('Payment was cancelled. Your registration details are saved \u2014 click the button to try again.', 'error');
+
+        } else if (res && (res.status === 'declined' || res.code === 'CARD_DECLINED')) {
+          trackEvent('payment_declined', { grandTotal: data.grandTotal });
+          btn.disabled = false;
+          btn.innerHTML = 'Review &amp; Pay for Group &rarr;';
+          showMsg('Your card was declined. Please try a different card or contact your bank, then try again.', 'error');
+
+        } else {
+          const reason = (res && (res.reason || res.error || res.status)) || 'not completed';
+          trackEvent('payment_failed', { error: reason, grandTotal: data.grandTotal });
+          btn.disabled = false;
+          btn.innerHTML = 'Review &amp; Pay for Group &rarr;';
+          showMsg('Payment was not completed (' + reason + '). Please check your card details and try again, or contact <a href="mailto:support@2026conventions.com">support@2026conventions.com</a>.', 'error');
+        }
+      }
+
+      // Listen for postMessage from Zoho payment iframe
+      function msgHandler(e) {
+        try {
+          const d = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data;
+          if (d && (d.payment_id || d.paymentId || d.status)) handleZohoResult(d);
+        } catch(ex) {}
+      }
+      window.addEventListener('message', msgHandler);
+
+      const zohoOpenParams = sessionId
+        ? { payment_session_id: sessionId }
+        : {
+            amount:        amount,
+            currency_code: 'EUR',
+            description:   description,
+            customer_name:    `${data.pcFirst} ${data.pcLast}`,
+            customer_email:   data.pcEmail,
+            customer_details: { first_name: data.pcFirst, last_name: data.pcLast, email: data.pcEmail, mobile: data.pcPhone }
+          };
+
+      try {
+        const callbackOpts = {
+          callback:  handleZohoResult,
+          onSuccess: handleZohoResult,
+          onFailure: handleZohoResult,
+          onClose:   function() { handleZohoResult({ status: 'closed' }); }
+        };
+        if (sessionId && typeof zpayments.requestPaymentSession === 'function') {
+          zpayments.requestPaymentSession({ payment_session_id: sessionId, ...callbackOpts });
+        } else {
+          zpayments.open({ ...zohoOpenParams, ...callbackOpts });
+        }
+
+      } catch (err) {
+        window.removeEventListener('message', msgHandler);
+        console.error('Payment error:', err);
+        trackEvent('payment_error', { error: err.message, grandTotal: data.grandTotal });
+        btn.disabled = false;
+        btn.innerHTML = 'Review &amp; Pay for Group &rarr;';
+        showMsg('Payment initiation failed. Please email <a href="mailto:support@2026conventions.com">support@2026conventions.com</a> with subject "ESCMID 2026 Group Registration" and we will send a secure payment link within 1 hour.', 'error');
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    // POST-PAYMENT: DOC UPLOAD + MEMBER CREDENTIALS
+    // ═══════════════════════════════════════════════════════════════════
+    function buildPostPaymentModal(data, paymentData) {
+      const payId = paymentData?.payment_id || 'N/A';
+      const modal = document.getElementById('doc-upload-modal');
+      const items = document.getElementById('doc-upload-items');
+      items.innerHTML = '';
+
+      // Check which attendees need docs
+      const needsDocs    = [];
+      const memberCreds  = [];
+
+      data.attendees.forEach((a, i) => {
+        if (DOC_REQUIREMENTS[a.cat]) {
+          needsDocs.push({ idx: i, name: a.name, cat: a.cat, req: DOC_REQUIREMENTS[a.cat] });
+        }
+        if (MEMBER_CATS.includes(a.cat)) {
+          // Pre-fill from table if available
+          const mid = document.querySelector(`[name="mid_${a.id}"]`)?.value.trim() || '';
+          memberCreds.push({ idx: i, id: a.id, name: a.name, cat: a.cat, prefilled: mid });
+        }
+      });
+
+      // Payment success banner
+      items.innerHTML += `
+        <div style="background:#e6f9f0;border:1px solid #7edcaa;border-radius:9px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.84rem;color:#0b6b40;font-weight:600;">
+          ✓ Payment successful! Reference: <span style="font-family:monospace;">${payId}</span>
+        </div>
+      `;
+
+      if (!needsDocs.length && !memberCreds.length) {
+        // Nothing needed — just show success
+        items.innerHTML += `
+          <div style="text-align:center;padding:1.5rem 0;">
+            <div style="font-size:2.5rem;margin-bottom:.6rem;">🎉</div>
+            <h4 style="color:#1e3a5f;margin-bottom:.4rem;">Group Registration Complete!</h4>
+            <p style="font-size:.84rem;color:#6b7280;">A confirmation email has been sent to <strong>${data.pcEmail}</strong>.</p>
+          </div>
+        `;
+        document.getElementById('doc-skip-btn').style.display = 'none';
+        document.getElementById('doc-submit-btn').textContent = 'Close';
+        document.getElementById('doc-submit-btn').onclick = () => { modal.style.display = 'none'; };
+        modal.style.display = 'flex';
+        return;
+      }
+
+      // Member credentials
+      if (memberCreds.length) {
+        const credBlock = document.createElement('div');
+        credBlock.innerHTML = `<div style="font-size:.8rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.55rem;">ESCMID Member Credentials</div>`;
+        memberCreds.forEach(m => {
+          const div = document.createElement('div');
+          div.className = 'doc-upload-item';
+          div.innerHTML = `
+            <h4>${m.name}</h4>
+            <span class="doc-cat-badge">${PRICE_LABELS[m.cat]}</span>
+            <div class="field" style="margin-top:.4rem;">
+              <label style="font-size:.78rem;">ESCMID Member Number <span class="req">*</span></label>
+              <input type="text" id="cred-mid-${m.id}" placeholder="ESC-123456" value="${m.prefilled}" style="margin-top:.2rem;" />
+            </div>
+          `;
+          credBlock.appendChild(div);
+        });
+        items.appendChild(credBlock);
+      }
+
+      // Document uploads
+      if (needsDocs.length) {
+        const docBlock = document.createElement('div');
+        docBlock.innerHTML = `<div style="font-size:.8rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin:.6rem 0 .55rem;">Verification Documents</div>`;
+        needsDocs.forEach(nd => {
+          const div = document.createElement('div');
+          div.className = 'doc-upload-item';
+          div.innerHTML = `
+            <h4>${nd.name}</h4>
+            <span class="doc-cat-badge">${nd.req.badge}</span>
+            <p>${nd.req.instructions}</p>
+            <input type="file" id="doc-file-${nd.id}" accept="${nd.req.accept}" />
+            <div class="doc-status" id="doc-status-${nd.id}"></div>
+          `;
+          docBlock.appendChild(div);
+
+          div.querySelector(`#doc-file-${nd.id}`).addEventListener('change', function() {
+            const st = document.getElementById(`doc-status-${nd.id}`);
+            if (this.files[0]) {
+              st.textContent = `✓ ${this.files[0].name}`;
+              st.className = 'doc-status';
+              st.style.display = 'block';
+            }
+          });
+        });
+        items.appendChild(docBlock);
+      }
+
+      modal.style.display = 'flex';
+
+      // Skip button
+      document.getElementById('doc-skip-btn').onclick = () => {
+        modal.style.display = 'none';
+        const msg = document.getElementById('doc-modal-msg');
+        if (msg) msg.innerHTML = `Documents can be emailed to <a href="mailto:support@2026conventions.com" style="color:#1a56a0;">support@2026conventions.com</a> with Payment ID <strong>${payId}</strong> in the subject.`;
+        showMsg(`Registration confirmed! Payment reference: ${payId}. Please email any required documents to support@2026conventions.com.`, 'success');
+        trackEvent('doc_skipped', { payId });
+      };
+
+      // Submit button
+      document.getElementById('doc-submit-btn').onclick = async () => {
+        const submitBtn = document.getElementById('doc-submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Uploading…';
+
+        const collectedData = { payId, orgName: data.orgName, email: data.pcEmail };
+
+        // Gather member credentials
+        memberCreds.forEach(m => {
+          const val = document.getElementById(`cred-mid-${m.id}`)?.value.trim();
+          collectedData[`member_id_${m.name}`] = val || '';
+        });
+
+        // Gather files via FileReader
+        const filePromises = needsDocs.map(nd => {
+          return new Promise(resolve => {
+            const input = document.getElementById(`doc-file-${nd.id}`);
+            if (!input || !input.files[0]) { resolve(null); return; }
+            const reader = new FileReader();
+            reader.onload = e => resolve({
+              name: nd.name, cat: nd.cat,
+              fileName: input.files[0].name,
+              fileType: input.files[0].type,
+              fileData: e.target.result
+            });
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(input.files[0]);
+          });
+        });
+
+        const files = (await Promise.all(filePromises)).filter(Boolean);
+
+        try {
+          fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST', mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              event: 'group_documents_submitted',
+              form: 'group-registration',
+              ...collectedData,
+              files: files.map(f => ({ name: f.name, cat: f.cat, fileName: f.fileName, fileType: f.fileType })),
+              timestamp: new Date().toISOString()
+            })
+          });
+        } catch(e) {}
+
+        modal.style.display = 'none';
+        showMsg(`Documents submitted successfully! Payment reference: ${payId}. We will review and confirm your group registration within 24 hours.`, 'success');
+        trackEvent('doc_submitted', { payId, docCount: files.length });
+      };
+    }
+
+    // ═══════════════════════════════════════════════════════════════════
+    // HELPERS
+    // ═══════════════════════════════════════════════════════════════════
+    function showMsg(msg, type) {
+      const el = document.getElementById('form-message');
+      el.innerHTML  = msg;
+      el.className  = type;
+      el.style.display = 'block';
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+  </script>
+</body>
+</html>
